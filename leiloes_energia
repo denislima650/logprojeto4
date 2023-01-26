@@ -1,0 +1,37 @@
+class operador_notifica_leiloes(navegador):
+    def __init__(self, nome_navegador):
+        navegador.__init__(self, nome_navegador=nome_navegador)
+        self.root_directory = (
+            fr'C:/Log/OneDrive - GALAPAGOS CAPITAL/5.MIDDLE/Imagens/mapas_stormvista')
+        self.data = self.date.datetime.today().strftime("%Y%m%d")
+        self.dictmodeloespecifico = {'gfs-suite': {'120': '0', '240': '40', '360': '80'},
+                                     'gfs-ens-suite': {'120': '0', '240': '20', '360': '40'},
+                                     'ecmwf-eps-suite': {'120': '0', '240': '24', '360': '44'},
+                                     'cmc-ens-suite': {'120': '0', '240': '20', '360': '40'},
+                                     'ecmwf-suite': {'120': '0', '240': '24', '360': None}}
+        self.driver = self.login_site()
+
+    def espera(self, tempo_espera=2):
+        self.time.sleep(tempo_espera)
+
+    def login_site(self):  # função responsável por fazer login no site
+        f = open(
+            r'C:\Log\OneDrive - GALAPAGOS CAPITAL\5.MIDDLE\Scripts\Preco\API\Drivers\phantom_js\mapas_stormvista/login_leiloes.txt')
+        user, password = f.readline().split(';')
+        self.driver.get('https://www.canalenergia.com.br/')
+        self.driver.
+        login = self.driver.find_element(self.By.ID, "login-button")
+        login.click()
+        self.espera()
+        login = self.driver.find_element(self.By.ID, "txtUserName")
+        login.click()
+        login.send_keys(user)
+        self.espera()
+        login = self.driver.find_element(self.By.NAME, 'passwordL')
+        login.click()
+        login.send_keys(password)
+        self.espera()
+        login = self.driver.find_element(self.By.CLASS_NAME, 'btn-login')
+        self.espera()
+        login.click()
+        return self.driver
