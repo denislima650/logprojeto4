@@ -1,4 +1,5 @@
 import operadores_Web_2 as opw
+data = datetime.datetime.today().strftime("%Y%m%d")
 mapas123 = opw.operador_notifica_leiloes('geck')
 mapas123.procura_leiloes()
 obj = opw.operador_Telegram('geck')
