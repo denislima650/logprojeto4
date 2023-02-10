@@ -1,8 +1,9 @@
-import operadores_Web_2 as opw
+import datetime, operadores_Web_2 as opw
 data = datetime.datetime.today().strftime("%Y%m%d")
 mapas123 = opw.operador_notifica_leiloes('geck')
-mapas123.procura_leiloes()
+mapas123.procura_leiloes() #comando pra entrar nos sites e criar o arquivo txt
 obj = opw.operador_Telegram('geck')
-contato="Busca_leiloes"
-path_arquivo=open(fr'C:/Log/OneDrive - GALAPAGOS CAPITAL/5.MIDDLE/Imagens/mapas_stormvista/relatorio_mapas-stormvista/LEILÕES/{data}_busca_leilões.txt','rb')
+contato="Busca_leiloes" #referencia para o contato do grupo do telegram
+path_arquivo=open(fr'C:/Log/OneDrive - GALAPAGOS CAPITAL/5.MIDDLE/Imagens/mapas_stormvista/relatorio_mapas-stormvista/LEILÕES/{data}_busca_leilões.txt','rb') #caminho do txt criado
 obj.envia_documento(contato, path_arquivo)
+
